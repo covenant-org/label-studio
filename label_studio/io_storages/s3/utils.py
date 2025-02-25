@@ -27,11 +27,7 @@ def get_client_and_resource(
         f'secret key={aws_secret_access_key[:4] + "..." if aws_secret_access_key else None}, '
         f'session token={aws_session_token}'
     )
-    session = boto3.Session(
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key,
-        aws_session_token=aws_session_token,
-    )
+    session = boto3.Session()
     settings = {'region_name': region_name or get_env('S3_region') or 'us-east-1'}
     s3_endpoint = s3_endpoint or get_env('S3_ENDPOINT')
     if s3_endpoint:
